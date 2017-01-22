@@ -14,7 +14,7 @@ import { StateService } from "ui-router-ng2";
     <div class="panel panel-info" >
       <div class="panel-heading"><div class="panel-title">Sign In</div></div>  
         <div style="padding-top:30px" class="panel-body" >
-          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>    
+          <div [hidden]="login_error.length == 0" class="alert alert-danger col-sm-12"> {{login_error}} </div>    
           <form (ngSubmit)="onSubmit()" #authForm="ngForm" class="form-horizontal" role="form">       
             <div style="margin-bottom: 25px" class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -51,6 +51,7 @@ export class LoginComponent {
   login : string;
   password : string;
   remember : boolean = true;
+  login_error : string = '';
   private _authService : AuthService;
   private _state : StateService;
   constructor( private authService : AuthService, private stateService : StateService ){
@@ -64,7 +65,7 @@ export class LoginComponent {
     console.log(this.login, this.password);
     this._authService.auth( this.login, this.password, this.remember ).then(
       ()=>{ this._state.go('app.products') },
-      ( auth_resolve )=>{ console.log(auth_resolve.error); }
+      ( auth_resolve )=>{ this.login_error = auth_resolve.error }
     );
   }
 }
