@@ -27,8 +27,12 @@ export class Product implements ProductFields{
     this.sku = product.sku;
     this.name = product.name;
     this.price = product.price;
-    if(typeof product._price == 'number')
+    if(typeof product._price == 'number'){
       this._price = product._price;
+    }
+    if(product.createdAt instanceof Date){
+      this.createdAt = product.createdAt;
+    }
   }
   constructor( product : ProductFields ){
 

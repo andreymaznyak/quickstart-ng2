@@ -10,13 +10,13 @@ import { CommonProductComponentFields } from "./product";
 @Component({
   selector:'product-detail',
   template:`
-  <h5>
-    products detail component
-  </h5>
-  <label>sku: {{product.sku}}</label><br>
-  <label>Name: {{product.name}}</label><br>
-  <label>Price: {{product.price}}$</label><br>
-  <label>CreateAt: {{product.createdAt}}</label><br>
+  <h3>
+    Product detail
+  </h3>
+  <label>sku: </label>      <p>{{ product.sku }}</p><br>
+  <label>Name: </label>     <p>{{ product.name }}</p> <br>
+  <label>Price: </label>    <p>{{ product.price }}$</p> <br>
+  <label>CreateAt: </label> <p>{{ product.createdAt.toLocaleString() }}</p> <br>
   <a class="btn btn-primary" uiSref=".edit"> Edit </a>
   <button class="btn btn-danger" (click)="remove(product.sku)"> Delete </button>
   <button type="button" class="btn" uiSref="app.products"> Back to list </button>

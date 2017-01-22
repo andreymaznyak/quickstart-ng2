@@ -13,7 +13,7 @@ import {CommonProductComponentFields, Product} from './product';
     <form (ngSubmit)="onSubmit()" #productForm="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Sku</label>
-        <input type="text" class="form-control" required id="sku" name="sku" [(ngModel)]="product.sku" #sku="ngModel" (ngModelChange)="onChangeSku($event)">
+        <input type="text" class="form-control" required value="" name="sku" [(ngModel)]="product.sku" #sku="ngModel" (ngModelChange)="onChangeSku($event)">
         <div [hidden]="sku.valid || sku.pristine"
              class="alert alert-danger">
           Sku is required
@@ -29,7 +29,7 @@ import {CommonProductComponentFields, Product} from './product';
       </div>
       <div class="form-group">
         <label for="alterEgo">Name</label>
-        <input type="text" class="form-control" required id="name" name="name" [(ngModel)]="product.name" #name="ngModel">
+        <input type="text" class="form-control" required value="" name="name" [(ngModel)]="product.name" #name="ngModel">
         <div [hidden]="name.valid || name.pristine"
              class="alert alert-danger">
           Name is required
@@ -38,13 +38,16 @@ import {CommonProductComponentFields, Product} from './product';
       </div>
       <div class="form-group">
         <label for="alterEgo">Price</label>
-        <input type="number" min="0.01" step="0.01" class="form-control" required id="price" name="price" [(ngModel)]="product.price" #price="ngModel">
+        <input type="number" min="0.01" step="0.01" class="form-control" required value="" name="price" [(ngModel)]="product.price" #price="ngModel">
         <div [hidden]="price.valid || price.pristine"
              class="alert alert-danger">
           Price is required
         </div>
       </div>
-      
+      <div *ngIf="!_is_new_element" class="form-group">
+        <label for="alterEgo">Created At</label>
+        <p class="form-control-static"> {{ product.createdAt.toLocaleString() }} </p>
+      </div>
       <button class="btn btn-success" type="submit" class="btn btn-success" [disabled]="!productForm.form.valid || !_sku_valid || product.sku.toLowerCase() == 'new'" > Save </button>
       <button type="button" class="btn btn-danger" *ngIf="!_is_new_element" (click)="remove(product.sku)"> Delete </button>
       <button type="button" class="btn" uiSref="app.products"> Back to list </button>
@@ -70,7 +73,7 @@ export class ProductEditComponent extends CommonProductComponentFields implement
     super( productService, state );
 
   }
-  ngOnInit() {
+  ngOnInit(){
     this._id = this.product.sku;
     if( this.product.sku === 'new' ){
       this.product.sku = ''; this._is_new_element = true;
@@ -79,7 +82,7 @@ export class ProductEditComponent extends CommonProductComponentFields implement
   onChangeSku() : void {
     this._sku_valid = this.isValidSku(this.product.sku);
   }
-  isValidSku( sku : string ) : boolean{
+  isValidSku( sku : string ) : boolean {
     let element : Product | undefined = this._productsService.getElementBySku( sku );
     let result : boolean = false;
 

@@ -8,9 +8,6 @@ let template = `
   <a class="btn-right" (click)="logout()" [hidden]="!_authService.authorized"> Logout </a>
   <ui-view></ui-view>
 </div>
-
-
-<ui-view name="footer"></ui-view>
 `;
 
 @Component({
