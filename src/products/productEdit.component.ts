@@ -10,7 +10,7 @@ import {CommonProductComponentFields, Product} from './product';
   template:`
   <div class="container">
     <h1>{{ _is_new_element ? 'Create' : 'Edit'}} product</h1>
-    <form (ngSubmit)="onSubmit()" #productForm="ngForm" novalidate>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
       <div class="form-group">
         <label for="name">Sku</label>
         <input type="text" class="form-control" required value="" name="sku" [(ngModel)]="product.sku" #sku="ngModel" (ngModelChange)="onChangeSku($event)">
@@ -38,7 +38,7 @@ import {CommonProductComponentFields, Product} from './product';
       </div>
       <div class="form-group">
         <label for="alterEgo">Price</label>
-        <input type="number" min="0.01" step="0.01" class="form-control" required value="" name="price" [(ngModel)]="product.price" #price="ngModel">
+        <input type="number" class="form-control" min="0" step="0.01" required value="" name="price" [(ngModel)]="product.price" #price="ngModel">
         <div [hidden]="price.valid || price.pristine"
              class="alert alert-danger">
           Price is required
@@ -76,7 +76,9 @@ export class ProductEditComponent extends CommonProductComponentFields implement
   ngOnInit(){
     this._id = this.product.sku;
     if( this.product.sku === 'new' ){
-      this.product.sku = ''; this._is_new_element = true;
+      this.product.sku = '';
+      this._is_new_element = true;
+      this.product.price = 1;
     }
   }
   onChangeSku() : void {

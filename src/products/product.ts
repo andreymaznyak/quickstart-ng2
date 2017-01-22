@@ -32,12 +32,18 @@ export class Product implements ProductFields{
     }
     if(product.createdAt instanceof Date){
       this.createdAt = product.createdAt;
+    }else if(typeof product.createdAt == 'string' ) {
+      this.createdAt = new Date(product.createdAt);
+      if(this.createdAt.getTime() != this.createdAt.getTime()){
+        this.createdAt = new Date();
+      }
+    }else{
+      this.createdAt = new Date();
     }
   }
   constructor( product : ProductFields ){
 
       this.copy_attr(product);
-      this.createdAt = new Date();
 
   }
   save( product : ProductFields ) : void {

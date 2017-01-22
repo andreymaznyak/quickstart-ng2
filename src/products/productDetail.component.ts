@@ -17,7 +17,7 @@ import { CommonProductComponentFields } from "./product";
   <label>Name: </label>     <p>{{ product.name }}</p> <br>
   <label>Price: </label>    <p>{{ product.price }}$</p> <br>
   <label>CreateAt: </label> <p>{{ product.createdAt.toLocaleString() }}</p> <br>
-  <a class="btn btn-primary" uiSref=".edit"> Edit </a>
+  <button class="btn btn-primary" uiSref=".edit"> Edit </button>
   <button class="btn btn-danger" (click)="remove(product.sku)"> Delete </button>
   <button type="button" class="btn" uiSref="app.products"> Back to list </button>
   `
