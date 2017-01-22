@@ -25,8 +25,14 @@ export class ProductsService {
 
 
   }
-  getAll() : Product[] {
-    return this._products;//_.filter(, (prod) => prod.sku === '1');
+  getAll( params ) : Product[] {
+    let field : string = 'createdAt';
+    let direction : number = 0;
+    if(!!params.sort){
+      field = params.sort.substr(0,params.sort.length - 1);
+      direction = (params.sort.substr(params.sort.length - 1) == 'A') ? 0 : 2;
+    }
+    return this._products.sort( (left,right) => ( left[field] > right[field] ? 1 - direction : -1 + direction) );//_.filter(, (prod) => prod.sku === '1');
   }
   getElementBySku( sku: string ) : Product {
     return _.find(this._products, { sku: sku });

@@ -27,7 +27,7 @@ export let PRODUCTS_STATES: Ng2StateDeclaration[] = [
         resolveFn: (products: ProductsService, trans) =>{
           let params = trans.params();
           console.log(params);
-          return products.getAll();
+          return products.getAll(params);
         }
       },
       {
