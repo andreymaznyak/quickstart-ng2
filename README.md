@@ -1,7 +1,9 @@
 # based on UI-Router for Angular 2 QuickStart Source by Andrey Maznyak
 
+
+
 ### Demo
-[Demo](http://95.154.68.98:3000) hosted on orange pi.
+[Demo](http://95.154.68.98:3000) hosted on orange pi. Login: test password: 123
 
 ### Start development
 

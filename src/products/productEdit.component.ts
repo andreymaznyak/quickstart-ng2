@@ -10,7 +10,7 @@ import {CommonProductComponentFields, Product} from './product';
   template:`
   <div class="container">
     <h1>{{ _is_new_element ? 'Create' : 'Edit'}} product</h1>
-    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Sku</label>
         <input type="text" class="form-control" required id="sku" name="sku" [(ngModel)]="product.sku" #sku="ngModel" (ngModelChange)="onChangeSku($event)">
@@ -21,6 +21,10 @@ import {CommonProductComponentFields, Product} from './product';
         <div [hidden]="_sku_valid"
              class="alert alert-danger">
           Sku must be unique
+        </div>
+        <div [hidden]="product.sku.toLowerCase() != 'new'"
+             class="alert alert-danger">
+          'new' is reserved word
         </div>
       </div>
       <div class="form-group">
@@ -41,7 +45,7 @@ import {CommonProductComponentFields, Product} from './product';
         </div>
       </div>
       
-      <button class="btn btn-success" type="submit" class="btn btn-success" [disabled]="!productForm.form.valid || !_sku_valid" > Save </button>
+      <button class="btn btn-success" type="submit" class="btn btn-success" [disabled]="!productForm.form.valid || !_sku_valid || product.sku.toLowerCase() == 'new'" > Save </button>
       <button type="button" class="btn btn-danger" *ngIf="!_is_new_element" (click)="remove(product.sku)"> Delete </button>
       <button type="button" class="btn" uiSref="app.products"> Back to list </button>
     </form>
