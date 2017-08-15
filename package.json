@@ -14,29 +14,29 @@
     "url": "https://github.com/andreymaznyak/quickstart-ng2.git"
   },
   "dependencies": {
-    "@angular/common": "~2.4.0",
-    "@angular/compiler": "~2.4.0",
-    "@angular/core": "~2.4.0",
-    "@angular/forms": "~2.4.0",
-    "@angular/http": "~2.4.0",
-    "@angular/platform-browser": "~2.4.0",
-    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/common": "~4.3.4",
+    "@angular/compiler": "~4.3.4",
+    "@angular/core": "~4.3.4",
+    "@angular/forms": "~4.3.4",
+    "@angular/http": "~4.3.4",
+    "@angular/platform-browser": "~4.3.4",
+    "@angular/platform-browser-dynamic": "~4.3.4",
     "@types/lodash": "^4.14.50",
     "core-js": "^2.4.0",
     "es6-shim": "^0.35.0",
     "lodash": "^4.17.4",
     "reflect-metadata": "^0.1.3",
     "rxjs": "^5.0.0-beta.12",
-    "systemjs": "0.19.27",
+    "systemjs": "0.20.17",
     "ui-router-ng2": "^1.0.0-beta.3",
-    "ui-router-visualizer": "^2.0.7",
+    "ui-router-visualizer": "^4.0.0",
     "zone.js": "*"
   },
   "devDependencies": {
-    "@types/chai": "^3.4.34",
+    "@types/chai": "^4.0.3",
     "lite-server": "^2.1.0",
-    "npm-run-all": "^3.1.1",
-    "shx": "^0.1.4",
+    "npm-run-all": "^4.0.2",
+    "shx": "^0.2.2",
     "typescript": "^2.0.0"
   }
 }
