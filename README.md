@@ -1,5 +1,7 @@
 # based on UI-Router for Angular 2 QuickStart Source by Andrey Maznyak
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/andreymaznyak/quickstart-ng2.svg)](https://greenkeeper.io/)
+
 
 
 ### Demo
